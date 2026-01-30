@@ -1,0 +1,18 @@
+Monte Carlo Simulation Report
+=============================
+Date: 2026-01-30
+Stock: BBCA
+Frequency: daily
+Time Horizon: 1080 steps
+Simulations: 1000
+
+Statistics:
+  Last Price: 7200.0
+  Mean Log Return: -0.000119
+  Volatility (std): 0.014881
+  Drift: -0.000230
+
+Results:
+  Expected Price: 6295.71
+  VaR (5%): 2547.77
+  Implied Growth: -12.56%

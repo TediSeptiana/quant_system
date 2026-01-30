@@ -1,0 +1,49 @@
+Reading file...
+Columns found:
+- No
+- Kode Saham
+- Nama Perusahaan
+- Remarks
+- Sebelumnya
+- Open Price
+- Tanggal Perdagangan Terakhir
+- First Trade
+- Tertinggi
+- Terendah
+- Penutupan
+- Selisih
+- Volume
+- Nilai
+- Frekuensi
+- Index Individual
+- Offer
+- Offer Volume
+- Bid
+- Bid Volume
+- Listed Shares
+- Tradeble Shares
+- Weight For Index
+- Foreign Sell
+- Foreign Buy
+- Non Regular Volume
+- Non Regular Value
+- Non Regular Frequency
+
+--- Unique Values Analysis ---
+
+Column: Remarks
+Unique count: 598
+First 10 values: ['--MO1SD0F10000A121------------' '--MO113E000000D232------------'
+ '--U-4100000000E614-E---------X' '--U-4105000000G412-----------X'
+ '--MO1135000000A121------------' '--MO1H35UD4100E743------------'
+ '--UO2100000000E413------------' '--UO2135000000J211------------'
+ '--UO2135000000H111------------' '--UO2135000000D212------------']
+
+Column: Index Individual
+Unique count: 857
+First 10 values: [128.8 625.5 121.5 931.5  78.1 502.4  80.6  10.   46.2 780.5]
+
+Column: Weight For Index
+Unique count: 911
+First 10 values: [1464714340  390711732 1298844643   81325675  414626649 6846443841
+  720207460 1560716628 2222222220   50318197]

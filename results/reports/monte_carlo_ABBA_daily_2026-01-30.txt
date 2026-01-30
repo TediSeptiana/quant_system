@@ -1,0 +1,18 @@
+Monte Carlo Simulation Report
+=============================
+Date: 2026-01-30
+Stock: ABBA
+Frequency: daily
+Time Horizon: 1080 steps
+Simulations: 1000
+
+Statistics:
+  Last Price: 47.0
+  Mean Log Return: -0.001999
+  Volatility (std): 0.039600
+  Drift: -0.002783
+
+Results:
+  Expected Price: 6.05
+  VaR (5%): 0.31
+  Implied Growth: -87.12%

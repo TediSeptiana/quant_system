@@ -1,0 +1,168 @@
+tanggal terakhir update data adalah 2026-01-30
+
+
+## 1️⃣ Konsep OOP Efisien untuk Data Processing
+
+1. **Encapsulation (Modular Class)**
+
+   * Pisahkan tugas berbeda: misal scraping, cleaning, transform, save.
+   * Contoh:
+
+     ```python
+     class Cleaner:
+         def __init__(self, df):
+             self.df = df
+
+         def fill_missing(self):
+             pass
+
+     class Transformer:
+         def __init__(self, df):
+             self.df = df
+
+         def normalize(self):
+             pass
+
+     class DataPipeline:
+         def __init__(self, df):
+             self.df = df
+             self.cleaner = Cleaner(df)
+             self.transformer = Transformer(df)
+
+         def run(self):
+             self.cleaner.fill_missing()
+             self.transformer.normalize()
+             return self.df
+     ```
+
+2. **Method Chaining**
+
+   * Biar ringkas, bisa chaining method → lebih cepat tulis dan maintain.
+
+     ```python
+     cleaned_df = (Cleaner(df)
+                   .fill_missing()
+                   .drop_duplicates()
+                   .normalize()
+                   .df)
+     ```
+
+3. **Lazy Evaluation / Generator di Class**
+
+   * Jangan load seluruh dataset sekaligus jika besar.
+   * Gunakan generator:
+
+     ```python
+     class DataLoader:
+         def __init__(self, file_path):
+             self.file_path = file_path
+
+         def read_chunks(self, chunk_size=10000):
+             import pandas as pd
+             for chunk in pd.read_csv(self.file_path, chunksize=chunk_size):
+                 yield chunk
+     ```
+
+4. **Paralel / Async di Class**
+
+   * Bisa buat class Worker untuk multiprocessing/threading:
+
+     ```python
+     from concurrent.futures import ThreadPoolExecutor
+
+     class ParallelProcessor:
+         def __init__(self, data, func):
+             self.data = data
+             self.func = func
+
+         def run(self, workers=4):
+             with ThreadPoolExecutor(max_workers=workers) as executor:
+                 results = list(executor.map(self.func, self.data))
+             return results
+     ```
+
+5. **Vectorized Operations**
+
+   * Jangan loop row-by-row, pakai Pandas / Numpy / Polars
+   * Bisa dibungkus di method OOP supaya tetap modular:
+
+     ```python
+     class Transformer:
+         def __init__(self, df):
+             self.df = df
+
+         def normalize(self, column):
+             self.df[column] = (self.df[column] - self.df[column].min()) / \
+                               (self.df[column].max() - self.df[column].min())
+             return self
+     ```
+
+---
+
+## 2️⃣ Contoh Pipeline OOP Cepat & Efisien
+
+```python
+import pandas as pd
+from concurrent.futures import ThreadPoolExecutor
+
+class Cleaner:
+    def __init__(self, df):
+        self.df = df
+
+    def fill_missing(self, method='mean'):
+        for col in self.df.select_dtypes(include='number').columns:
+            if method=='mean':
+                self.df[col].fillna(self.df[col].mean(), inplace=True)
+        return self
+
+    def drop_duplicates(self):
+        self.df.drop_duplicates(inplace=True)
+        return self
+
+class Transformer:
+    def __init__(self, df):
+        self.df = df
+
+    def normalize(self, columns):
+        for col in columns:
+            self.df[col] = (self.df[col]-self.df[col].min()) / (self.df[col].max()-self.df[col].min())
+        return self
+
+class Pipeline:
+    def __init__(self, df):
+        self.df = df
+        self.cleaner = Cleaner(df)
+        self.transformer = Transformer(df)
+
+    def run(self):
+        self.cleaner.fill_missing().drop_duplicates()
+        self.transformer.normalize(['salary','age'])
+        return self.df
+
+# Jalankan pipeline
+df = pd.read_csv('scraped_data.csv')
+pipeline = Pipeline(df)
+cleaned_df = pipeline.run()
+print(cleaned_df.head())
+```
+
+**Kelebihan:**
+
+* Modular → gampang tambah step baru
+* Chaining → rapi
+* Bisa dioptimalkan dengan **multiprocessing** untuk data besar
+
+---
+
+How to Run
+Preprocessing:
+
+python scripts/preprocess_data.py
+Simulation:
+
+# Daily (30 days)
+python scripts/monte_carlo.py --stock [TICKER] --freq daily --steps 30 --sims 1000
+# Weekly (10 weeks)
+python scripts/monte_carlo.py --stock [TICKER] --freq weekly --steps 10 --sims 1000
+# Monthly (12 months)
+python scripts/monte_carlo.py --stock [TICKER] --freq monthly --steps 12 --sims 1000

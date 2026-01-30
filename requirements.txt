@@ -1,0 +1,15 @@
+# Basic dependencies for a quant system
+pandas
+numpy
+matplotlib
+seaborn
+yfinance
+ccxt
+scikit-learn
+statsmodels
+backtrader
+jupyterlab
+python-dotenv
+requests
+openpyxl
+beautifulsoup4

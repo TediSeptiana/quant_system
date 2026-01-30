@@ -1,0 +1,18 @@
+Monte Carlo Simulation Report
+=============================
+Date: 2026-01-30
+Stock: AADI
+Frequency: weekly
+Time Horizon: 1080 steps
+Simulations: 1000
+
+Statistics:
+  Last Price: 7400.0
+  Mean Log Return: -0.001268
+  Volatility (std): 0.062543
+  Drift: -0.003224
+
+Results:
+  Expected Price: 1949.23
+  VaR (5%): 7.36
+  Implied Growth: -73.66%
