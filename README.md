@@ -1,7 +1,3 @@
-Berikut **teks README yang rapi, jelas, dan fokus pada tujuan proyek** `quant_system`. Teks ini siap untuk kamu paste langsung ke file **README.md** di repository GitHub kamu:
-
----
-
 # quant_system
 
 ## Tujuan Proyek
