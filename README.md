@@ -89,8 +89,4 @@ Kontribusi kode dan ide sangat diterima. Untuk kontribusi:
 
 ## Lisensi
 
-Proyek ini dibuat terbuka dengan lisensi MIT. Kamu bebas menggunakan dan mengembangkan lebih lanjut dengan mencantumkan atribusi.
-
----
-
-Kalau kamu ingin versi README yang **lebih teknis** dengan contoh kode cara pakai fungsi analisanya, aku bisa bantu susun juga. Cukup bilang saja.
+Proyek ini dibuat terbuka dengan lisensi MIT. Kamu bebas menggunakan dan mengembangkan lebih lanjut dengan mencantumkan atribusi
